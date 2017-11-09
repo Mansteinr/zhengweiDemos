@@ -1,0 +1,250 @@
+@charset "UTF-8";
+
+html, body, header, section, h1, h2, h3, h4, h5, h6, hr, p, dl, dt, dd, ul, ol, li, img {
+  margin: 0;
+  padding: 0
+}
+
+html, body {
+  width: 100%;
+  -webkit-font-smoothing: antialiased; //抗锯齿
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Microsoft YaHei", "Hiragino Sans GB W3", "Heiti SC", Arial, sans-serif;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  /* Disable certain interactions on touch devices */
+  -webkit-touch-callout: none;/*禁止长按链接与图片弹出菜单*/
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  -webkit-highlight: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+  display: block
+}
+
+a, button, input, optgroup, select, textarea {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*去掉a input button 点击时的蓝色外边框和灰色半透明背景*/
+}
+
+a, img {
+  -webkit-touch-callout: none; /*禁止长按链接与图片弹出菜单*/
+}
+
+.scroll-el {
+  overflow: auto;
+}
+
+/*px转换rem*/
+@function px2rem($px) {
+  $rem: 75;
+  @return ($px/$rem) +rem;
+}
+
+@mixin font-dpr($font-size) {
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+}
+
+/*@include font-dpr(28px)*/
+
+input[type='text'], input[type='password'], input[type='search'] {
+  font-family: "Fakt";
+  font-weight: 400
+}
+
+h1, h2 {
+  font-size: 100%;
+  font-weight: normal
+}
+
+ul {
+  list-style: none
+}
+
+a {
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-appearance: none;
+  blr: expression(this.onFocus=this.blur());
+}
+
+a:hover {
+  text-decoration: underline;
+  outline: 0
+}
+
+a:active {
+  text-decoration: none;
+  outline: 0
+}
+
+a:focus, input, textarea, button {
+  outline: 0
+}
+
+img {
+  border: 0 none;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic
+}
+
+/*显示消失*/
+.dn {
+  display: none !important
+}
+
+.db {
+  display: block
+}
+
+/*清除浮动*/
+.clearfix:after {
+  content: " ";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+/*左右浮动*/
+.fl {
+  float: left;
+  display: inline
+}
+
+.fr {
+  float: right;
+  display: inline
+}
+
+/*定位*/
+.pr {
+  position: relative;
+  *zoom: 1
+}
+
+.pa {
+  position: absolute
+}
+
+.pf {
+  position: fixed
+}
+
+.ps {
+  position: static
+}
+
+/*弹性布局*/
+.g-line, .g-lastu {
+  overflow: auto;
+  overflow: visible;
+  _zoom: 1;
+}
+
+.g-u {
+  float: left;
+  _zoom: 1;
+}
+
+.g-lastu {
+  float: none;
+  _position: relative;
+  _left: -3px;
+  _margin-right: -3px;
+  width: auto;
+  overflow: hidden;
+  zoom: 1;
+}
+
+/*通用背景路径*/
+$bg_pr: "../../img/";
+$ver: '?t=2017011801';
+
+* {
+  -moz-box-sizing: border-box; /* Firefox */
+  -webkit-box-sizing: border-box; /* Safari */
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*图标*/
+
+.icon {
+  display: inline-block;
+  background: no-repeat center;
+  background-size: 100% 100%;
+}
+
+.icon-v {
+  background-image: url(../../img/icon/v.png);
+  width: px2rem(17);
+  height: px2rem(15);
+}
+
+.icon-arrow-gray {
+  background-image: url(../../img/icon/arrow_gray.png);
+  width: px2rem(11);
+  height: px2rem(19);
+}
+
+.icon-arrow-white {
+  background-image: url(../../img/icon/arrow_white.png);
+  width: px2rem(19);
+  height: px2rem(12);
+}
+
+.icon-location {
+  background-image: url(../../img/icon/location_gray.png);
+  width: px2rem(20);
+  height: px2rem(27);
+}
+
+.icon-telephone {
+  background-image: url(../../img/icon/telephone.png);
+  width: px2rem(25);
+  height: px2rem(33);
+}
+
+.text-overflow {
+  width: 100%;
+  overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+  text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+  white-space: nowrap; /* 不换行 */
+}
+
+.line2-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

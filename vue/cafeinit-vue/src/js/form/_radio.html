@@ -1,0 +1,38 @@
+<div v-if="option" v-bind:class="[
+    ns + 'radio',
+    option.disabled ? (ns + 'disabled') : ''
+  ]">
+  <input type="radio"
+    v-model="myValue"
+    v-bind:id="'radio-' + _uid"
+    v-bind:name="name"
+    v-bind:value="option.value"
+    v-bind:disabled="option.disabled"
+    v-on:change="onChange"
+    v-on:click="onClick" />
+  <label v-bind:for="'radio-' + _uid">
+    <i class="fa fa-dot-circle-o"></i>
+    <span>{{ option.title || option.value }}</span>
+  </label>
+</div>
+
+<div v-else v-bind:class="ns + 'radios'">
+  <div v-for="(option, index) in options"
+    v-bind:class="[
+      ns + (inline ? 'radio-inline' : 'radio'),
+      option.disabled ? (ns + 'disabled') : ''
+    ]">
+    <input type="radio"
+      v-model="myValue"
+      v-bind:id="'radio-' + _uid + '-' + index"
+      v-bind:name="name"
+      v-bind:value="option.value"
+      v-bind:disabled="option.disabled"
+      v-on:change="onChange"
+      v-on:click="onClick" />
+    <label v-bind:for="'radio-' + _uid + '-' + index">
+      <i class="fa fa-dot-circle-o"></i>
+      <span>{{ option.title || option.value }}</span>
+    </label>
+  </div>
+</div>

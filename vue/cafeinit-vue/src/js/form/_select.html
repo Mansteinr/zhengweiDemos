@@ -1,0 +1,22 @@
+<div v-bind:class="ns + 'select'">
+  <select v-if="groups.length"
+    v-model="myValue"
+    v-bind:name="name"
+    v-on:change="onChange">
+    <optgroup v-for="group in groups" v-bind:label="group.title">
+      <option v-for="option in group.options"
+        v-bind:value="option.value"
+        v-bind:disabled="option.disabled">{{option.title}}</option>
+    </optgroup>
+  </select>
+
+  <select v-if="options.length"
+    v-model="myValue"
+    v-bind:name="name"
+    v-on:change="onChange">
+    <option v-for="option in options"
+      v-bind:value="option.value"
+      v-bind:disabled="option.disabled">{{option.title}}</option>
+  </select>
+  <i class="fa fa-sort-desc"></i>
+</div>

@@ -1,0 +1,38 @@
+<div v-if="option" v-bind:class="[
+    ns + 'checkbox',
+    option.disabled ? (ns + 'disabled') : ''
+  ]">
+  <input type="checkbox"
+    v-model="myValue"
+    v-bind:id="'checkbox-' + _uid"
+    v-bind:name="name"
+    v-bind:value="option.value"
+    v-bind:disabled="option.disabled"
+    v-on:change="onChange"
+    v-on:click="onClick" />
+  <label v-bind:for="'checkbox-' + _uid">
+    <i class="fa fa-check-square-o"></i>
+    <span>{{ option.title || option.value }}</span>
+  </label>
+</div>
+
+<div v-else v-bind:class="ns + 'checkboxs'">
+  <div v-for="(option, index) in options"
+    v-bind:class="[
+      ns + (inline ? 'checkbox-inline' : 'checkbox'),
+      option.disabled ? (ns + 'disabled') : ''
+    ]">
+    <input type="checkbox"
+      v-model="myValue"
+      v-bind:id="'checkbox-' + _uid + '-' + index"
+      v-bind:name="name"
+      v-bind:value="option.value"
+      v-bind:disabled="option.disabled"
+      v-on:change="onChange"
+      v-on:click="onClick" />
+    <label v-bind:for="'checkbox-' + _uid + '-' + index">
+      <i class="fa fa-check-square-o"></i>
+      <span>{{ option.title || option.value }}</span>
+    </label>
+  </div>
+</div>

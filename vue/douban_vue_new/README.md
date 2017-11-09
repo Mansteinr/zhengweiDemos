@@ -1,0 +1,11 @@
+## 豆瓣项目
+1. 规划组件
+    + top
+    + 导航部分有四个组件
+2. 安装webpack类型的模板
+3. 把静态资源放到static,assets当中
+4. 把index.html部分的内容body里面的东西放到App.vue当中
+5. 把Hello.vue改造成home.vue
+6. 修改router文件夹中的index.js
+7. 依次把in_theaters,coming_soon,top250制作出来
+8. 使用动态数据

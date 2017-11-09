@@ -1,0 +1,27 @@
+{
+  "name": "cafeinit-vue-demo",
+  "homepage": "https://github.com/iburning/cafeinit-vue",
+  "authors": [
+    "burning <iburning@live.cn>"
+  ],
+  "description": "CafeInit for Vue.js demo",
+  "main": "",
+  "keywords": [
+    "webpack",
+    "vue",
+    "cafeinit"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "amazeui": "^2.7.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}

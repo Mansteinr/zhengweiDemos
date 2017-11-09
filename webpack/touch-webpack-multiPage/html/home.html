@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="yes" name="apple-touch-fullscreen"/>
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no,email=no" name="format-detection"/>
+  <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+  <link href="" rel="apple-touch-icon-precomposed">
+  <link href="" rel="Shortcut Icon" type="image/x-icon"/>
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
+  <script src="http://res2.esf.leju.com/new_leju/src/js/lib/flexible.js"></script>
+  <script src="http://res2.esf.leju.com/new_leju/src/js/lib/vconsole.rem.js"></script>
+  <script src="http://res2.esf.leju.com/new_leju/src/js/lib/fastclick.js"></script>
+  <script>
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function () {
+        var attachFastClick = Origami.fastclick;
+        attachFastClick(document.body);
+      }, false);
+    }</script>
+  <script>
+    var currenturl = 'http://m.leju.com/touch/esf/bj';
+    var resUrl = 'http://res2.esf.leju.com';
+    var curcityEn = 'bj';
+    var curcityCn = '北京';
+
+    var page2 = window.location.pathname;
+    page2 = page2.replace('/touch/esf/bj/', '');
+    var lon = '';
+    var lat = '';
+    var uid = '';
+    var location_city = '北京';
+    var city = 'bj';
+    var level1_page = 'esf';
+    var level2_page = page2;
+    var custom_id = '';
+    var pagedefine = '100';
+
+  </script>
+  <title>触屏构建Demo</title>
+</head>
+<body>
+<ul class="entry-nav-bar list-hide">
+  <li><a href="http://m.leju.com/touch/index/?source=esf_dh">首页</a></li>
+  <li><a href="http://m.leju.com/?site=touch&amp;ctl=news&amp;act=index&amp;source=esf_dh">新闻</a></li>
+  <li><a href="http://m.leju.com/?site=touch&amp;ctl=house&amp;act=search&amp;source=esf_dh">新房</a></li>
+  <li><a href="http://m.leju.com/touch/esf/bj/">二手房</a></li>
+  <li><a href="http://m.leju.com/touch/esf/bj/house/i2/">租房</a></li>
+  <li><a href="http://jiaju.sina.cn/?utm_source=sjleju">家居</a></li>
+  <li><a href="javascript:;" class="show-more-btn">更多</a></li>
+  <li><a href="http://m.leju.com/?site=touch&amp;ctl=tehui&amp;act=equan&amp;source=esf_dh">优惠</a></li>
+  <li><a href="http://m.leju.com/?site=touch&amp;ctl=topic&amp;act=news_topic&amp;source=esf_dh">专题</a></li>
+  <li><a href="http://m.leju.com/?site=touch&amp;ctl=zhibo&amp;act=index&amp;source=esf_dh">直播</a></li>
+  <li><a href="http://app.fangjiadp.com/?s=yd_sjlj">查房价</a></li>
+  <li><a href="http://haiwai.house.sina.com.cn/touch/index">海外</a></li>
+  <li><a href="http://m.leju.com/touch/app/lists.html?source=esf_dh">APP</a></li>
+  <li><a href="javascript:;" class="hide-more-btn"><i class="icon icon-arrow-gray"></i></a></li>
+</ul>
+<header class="title-header-bar">
+  <a href="http://m.leju.com/touch/esf/bj/city" class="turn-location"><i class="icon icon-arrow-white"></i>北京</a>
+  <a href="http://m.leju.com" class="turn-leju"><img src="http://res2.esf.leju.com/new_leju/src/img/home/leju_logo.png"
+                                                     alt="乐居logo"></a>
+  <a href="javascript:;" class="show-btn"><i class="icon icon-user-head"></i></a>
+  <div class="title-choose-box">
+    <ul>
+      <li><a href="http://my.leju.com/web/sso/loginView?originUrl=http%3A%2F%2Fm.leju.com%2Ftouch%2Fesf%2Fbj%2F"
+             id="pc_loginBtn" class="person pc_oldhouse">个人中心</a></li>
+      <li><a href="http://m.leju.com/touch/esf/bj/delegate" class="ovners">业主委托</a></li>
+      <li><a href="http://j.m.leju.com" class="agent">经纪人后台</a></li>
+      <li><a href="http://m.leju.com/touch/esf/bj/im/notices" class="msg">我的消息<em></em></a></li>
+    </ul>
+  </div>
+</header>
+<div class="home-search-box">
+  <input type="text" placeholder="请输入小区名称、地址" value="" disabled >
+</div>
+<!--入口导航滑屏-->
+<nav class="slider-nav-box">
+  <div id='slider' class='swipe'>
+    <div class='swipe-wrap'>
+      <div>
+        <ul class="entry-icon-ul">
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/house/" title="二手房">
+              <i class="i-esf"></i>二手房
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/house/i2/" title="租房">
+              <i class="i-zf"></i>租房
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/community/" title="小区房价">
+              <i class="i-xqfj"></i>小区房价
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/agent/" title="置业专家">
+              <i class="i-zyzj"></i>置业专家
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/news/" title="购房资讯">
+              <i class="i-gfzx"></i>购房资讯
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/trade/" title="查成交">
+              <i class="i-ccj"></i>查成交
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/map/" title="地图找房">
+              <i class="i-dtzf"></i>地图找房
+            </a>
+          </li>
+
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/delegate/?type=3" title="帮你找房">
+              <i class="i-bnzf"></i>帮你找房
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul class="entry-icon-ul">
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/house/t5/" title="商业地产">
+              <i class="i-sydc"></i>商业地产
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/delegate" title="业主委托">
+              <i class="i-yzwt"></i>业主委托
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/jsq/" title="计算器">
+              <i class="i-jsq"></i>计算器
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/news/" title="购房资讯">
+              <i class="i-gfzx-blue"></i>购房资讯
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/map/" title="地图找房">
+              <i class="i-dtzf-red"></i>地图找房
+            </a>
+          </li>
+          <li>
+            <a href="http://m.leju.com/touch/esf/bj/community/" title="小区房价">
+              <i class="i-xqfj-blue"></i>小区房价
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slider-control">
+    <button class="current"></button>
+    <button></button>
+  </div>
+</nav>
+<!--直播房源-->
+<section class="live-house-box home-section"><!--出现多个同样的a标签链接是为了增加连接数，增强SEO-->
+  <header><img src="http://res2.esf.leju.com/new_leju/src/img/home/live_house_title.png" alt="直播真房源，看房模式新体验"></header>
+  <nav id="house-tab" class="clearfix">
+    <div class="active" data-tab="1">精选直播房源</div>
+    <i class="left-active"></i>
+    <div data-tab="2">精选直播小区</div>
+  </nav>
+  <ul data-tabid="1" class="active live-house-list">
+    <li class="live-house-li">
+      <article>
+        <a href="{{$url}}">
+          <span class="live-h-tit">后现代城</span>
+          <span class="live-h-msg">两室一厅/101平</span>
+          <span class="live-h-mas">张梦露</span>
+          <strong class="live-h-price"><span>500</span>万</strong>
+        </a>
+        <dl class="confirm-house">
+          <dt>中原地产</dt>
+          <dd><i class="icon icon-v"></i>认证真房源</dd>
+        </dl>
+      </article>
+      <figure>
+        <a href="{{$url}}">
+          <img src=""
+               data-src="http://res2.esf.leju.com/new_leju/src/img/home/live_house_demo.png" alt="live_house_demo" ／>
+        </a>
+      </figure>
+    </li>
+    <li class="live-house-li">
+      <article>
+        <a href="{{$url}}">
+          <span class="live-h-tit">后现代城</span>
+          <span class="live-h-msg">两室一厅/101平</span>
+          <span class="live-h-mas">张梦露</span>
+          <strong class="live-h-price"><span>500</span>万</strong>
+        </a>
+        <dl class="confirm-house">
+          <dt>中原地产</dt>
+          <dd><i class="icon icon-v"></i>认证真房源</dd>
+        </dl>
+      </article>
+      <figure>
+        <a href="{{$url}}">
+          <img src="http://res2.esf.leju.com/new_leju/src/img/default.png"
+               data-src="http://res2.esf.leju.com/new_leju/src/img/home/live_house_demo.png" alt="live_house_demo" ／>
+        </a>
+      </figure>
+    </li>
+    <li class="live-house-li">
+      <article>
+        <a href="{{$url}}">
+          <span class="live-h-tit">后现代城</span>
+          <span class="live-h-msg">两室一厅/101平</span>
+          <span class="live-h-mas">张梦露</span>
+          <strong class="live-h-price"><span>500</span>万</strong>
+        </a>
+        <dl class="confirm-house">
+          <dt>中原地产</dt>
+          <dd><i class="icon icon-v"></i>认证真房源</dd>
+        </dl>
+      </article>
+      <figure>
+        <a href="{{$url}}">
+          <img src=""
+               data-src="http://assets.jq22.com/plugin/pc-b107dc52-2db4-11e4-954d-000c29f61318.png"
+               alt="live_house_demo" ／>
+        </a>
+      </figure>
+    </li>
+  </ul>
+  <ul data-tabid="2" class="live-house-list">
+    <li class="live-house-li">
+      <article>
+        <a href="{{$url}}">
+          <span class="live-h-tit">2后现代城</span>
+          <span class="live-h-msg">2两室一厅/101平</span>
+          <span class="live-h-mas">2张梦露</span>
+          <strong class="live-h-price"><span>500</span>万</strong>
+        </a>
+        <dl class="confirm-house">
+          <dt>中原地产</dt>
+          <dd><i class="icon icon-v"></i>认证真房源</dd>
+        </dl>
+      </article>
+      <figure>
+        <a href="{{$url}}">
+          <img src="http://res2.esf.leju.com/new_leju/src/img/default.png"
+               data-src="http://assets.jq22.com/plugin/pc-b107dc52-2db4-11e4-954d-000c29f61318.png"
+               alt="live_house_demo" ／>
+        </a>
+      </figure>
+    </li>
+    <li class="live-house-li">
+      <article>
+        <a href="{{$url}}">
+          <span class="live-h-tit">后现代城</span>
+          <span class="live-h-msg">两室一厅/101平</span>
+          <span class="live-h-mas">张梦露</span>
+          <strong class="live-h-price"><span>500</span>万</strong>
+        </a>
+        <dl class="confirm-house">
+          <dt>中原地产</dt>
+          <dd><i class="icon icon-v"></i>认证真房源</dd>
+        </dl>
+      </article>
+      <figure>
+        <a href="{{$url}}">
+          <img src="http://res2.esf.leju.com/new_leju/src/img/default.png"
+               data-src="http://res2.esf.leju.com/new_leju/src/img/home/live_house_demo.png" alt="live_house_demo" ／>
+        </a>
+      </figure>
+    </li>
+    <li class="live-house-li">
+      <article>
+        <a href="{{$url}}">
+          <span class="live-h-tit">后现代城</span>
+          <span class="live-h-msg">两室一厅/101平</span>
+          <span class="live-h-mas">张梦露</span>
+          <strong class="live-h-price"><span>500</span>万</strong>
+        </a>
+        <dl class="confirm-house">
+          <dt>中原地产</dt>
+          <dd><i class="icon icon-v"></i>认证真房源</dd>
+          <dd><i class="icon icon-v"></i>认证真房源</dd>
+        </dl>
+      </article>
+      <figure>
+        <a href="{{$url}}">
+          <img src="" data-src="http://img2.imgtn.bdimg.com/it/u=2884017517,3741687017&fm=21&gp=0.jpg"
+               alt="live_house_demo" ／>
+        </a>
+      </figure>
+    </li>
+  </ul>
+  <a class="watch-more-btn" data-tabid="1" href="{{$url}}">查看更多<i class="icon icon-arrow-gray"></i></a>
+  <a class="watch-more-btn dn" data-tabid="2" href="{{$url}}">查看更多<i class="icon icon-arrow-gray"></i></a>
+</section>
+<!--便捷找房-->
+<section class="easy-house-box home-section">
+  <h4 class="box-title">便捷找房</h4>
+  <ul class="easy-house-list">
+    <li class="easy-house-djf"><a href="{{$url}}"><strong>低价房</strong><span>超值房价</span></a></li>
+    <li class="easy-house-msf"><a href="{{$url}}"><strong>免税房</strong><span>省钱不商量</span></a></li>
+    <li class="easy-house-dt"><a href="{{$url}}"><strong>地铁房</strong><span>通勤的早晨</span></a></li>
+    <li class="easy-house-jzf"><a href="{{$url}}"><strong>精装房</strong><span>省时省心</span></a></li>
+    <li class="easy-house-dtf"><a href="{{$url}}"><strong>电梯房</strong><span>再不爬楼梯</span></a></li>
+    <li class=""><a href="{{$url}}"><strong>商铺</strong><span>投资旺铺</span></a></li>
+    <li class=""><a href="{{$url}}"><strong>不限购</strong><span>别错过北京</span></a></li>
+  </ul>
+  <a class="watch-more-btn" href="{{$url}}">查看更多<i class="icon icon-arrow-gray"></i></a>
+</section>
+<!--购房资讯-->
+<section class="house-message-box home-section"><!--出现多个同样的a标签链接是为了增加连接数，增强SEO-->
+  <h4 class="box-title">购房资讯</h4>
+  <ul class="house-message-list">
+    <li>
+      <dl>
+        <dt><a href="{{$url}}">城市地产项12312312312目被叫停扩围 <span class="red-flag-text">要闻</span></a></dt>
+        <dd><a href="{{$url}}">北京下月实现跨省买房不要钱民生保障12312312312男士短裤静安寺都看得开飒飒是政府工作的重，老百姓就业</a></dd>
+      </dl>
+      <a class="message-fig" href="{{$url}}"><img src="http://res2.esf.leju.com/new_leju/src/img/default.png"
+                                                  data-src="http://res2.esf.leju.com/new_leju/src/img/home/new_demo.jpg"
+                                                  alt="城市地产项目"></a>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="{{$url}}">城市地产项目被叫停扩围 <span class="red-flag-text">要闻</span></a></dt>
+        <dd><a href="{{$url}}">北京下月实现跨省买房不要钱民生保障是政府工作的重，老百姓就业</a></dd>
+      </dl>
+      <a class="message-fig" href="{{$url}}"><img src="http://res2.esf.leju.com/new_leju/src/img/default.png"
+                                                  data-src="http://res2.esf.leju.com/new_leju/src/img/home/new_demo.jpg"
+                                                  alt="城市地产项目"></a>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="{{$url}}">城市地产项目被叫停扩围 <span class="red-flag-text">要闻</span></a></dt>
+        <dd><a href="{{$url}}">北京下月实现跨省买房不要钱民生保障是政府工作的重，老百姓就业</a></dd>
+      </dl>
+      <a class="message-fig" href="{{$url}}"><img src=""
+                                                  data-src="http://res2.esf.leju.com/new_leju/src/img/home/new_demo.jpg"
+                                                  alt="城市地产项目"></a>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="{{$url}}">城市地产项目被叫停扩围 <span class="red-flag-text">要闻</span></a></dt>
+        <dd><a href="{{$url}}">北京下月实现跨省买房不要钱民生保障是政府工作的重，老百姓就业</a></dd>
+      </dl>
+      <a class="message-fig" href="{{$url}}"><img src=""
+                                                  data-src="http://res2.esf.leju.com/new_leju/src/img/home/new_demo.jpg"
+                                                  alt="城市地产项目"></a>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="{{$url}}">城市地产项目被叫停扩围 <span class="red-flag-text">要闻</span></a></dt>
+        <dd><a href="{{$url}}">北京下月实现跨省买房不要钱民生保障是政府工作的重，老百姓就业</a></dd>
+      </dl>
+      <a class="message-fig" href="{{$url}}"><img src=""
+                                                  data-src="http://res2.esf.leju.com/new_leju/src/img/home/new_demo.jpg"
+                                                  alt="城市地产项目"></a>
+    </li>
+  </ul>
+  <a class="watch-more-btn" href="{{$url}}">查看更多<i class="icon icon-arrow-gray"></i></a>
+</section>
+<!--热门筛选-->
+<section class="hot-choose-box home-section"><!--出现多个同样的a标签链接是为了增加连接数，增强SEO-->
+  <h4 class="box-title">热门筛选</h4>
+  <ul class="hot-choose-list">
+    <li>
+      <button class="show-choose-btn"><i class="icon icon-arrow-gray"></i></button>
+      <a href="{{$url}}">附近<i class="icon icon-location"></i></a><a href="{{$url}}">海淀</a></a><a
+      href="{{$url}}">西城</a></a><a href="{{$url}}">宣武</a></a><a href="{{$url}}">大兴</a><a href="{{$url}}">东城</a>
+    </li>
+    <li>
+      <button class="show-choose-btn"><i class="icon icon-arrow-gray"></i></button>
+      <a href="{{$url}}">200万以下</a><a href="{{$url}}">200-500万</a></a><a href="{{$url}}">1000万以上</a>
+    </li>
+    <li>
+      <button class="show-choose-btn"><i class="icon icon-arrow-gray"></i></button>
+      <a href="{{$url}}">一室</a><a href="{{$url}}">二室</a></a><a href="{{$url}}">三室</a></a><a href="{{$url}}">四室</a><a
+      href="{{$url}}">五室</a>
+    </li>
+  </ul>
+  <a class="watch-more-btn" href="{{$url}}">查看更多<i class="icon icon-arrow-gray"></i></a>
+</section>
+<!--猜你喜欢-->
+<section class="favorite-box home-section"><!--出现多个同样的a标签链接是为了增加连接数，增强SEO-->
+  <h4 class="box-title">猜你喜欢</h4>
+  <ul class="favorite-list">
+    <li>
+      <figure><a href="{{$url}}"><img src="http://res2.esf.leju.com/new_leju/src/img/default.png"
+                                      data-src="http://res2.esf.leju.com/new_leju/src/img/home/live_house_demo.png"
+                                      alt="{{$alt}}"></a></figure>
+      <article>
+        <a class="" href="{{$url}}">
+          <span class="favorite-tit">石景山核心地段核心 温馨一居啊啊啊啊啊</span>
+          <span class="favorite-msg">2室2厅/ 108平</span>
+          <span class="favorite-mas">丰台区-方庄-晶城秀府</span>
+          <strong class="favorite-price"><span class="price-number">500</span>万</strong>
+          <span class="flag-line"><span class="red-flag-text">学区房</span><span class="red-flag-text">满五唯一</span><span
+            class="red-flag-text">满五唯一</span></span>
+        </a>
+        <a class="house-tel-btn" data-name="" data-moblie="" href="tel:{{$telnumber}}"><i class="icon icon-telephone"></i></a>
+      </article>
+    </li>
+    <li>
+      <figure><a href="{{$url}}"><img src="http://res2.esf.leju.com/new_leju/src/img/default.png"
+                                      data-src="http://res2.esf.leju.com/new_leju/src/img/home/live_house_demo.png"
+                                      alt="{{$alt}}"></a></figure>
+      <article>
+        <a class="" href="{{$url}}">
+          <span class="favorite-tit">石景山核心地段核心</span>
+          <span class="favorite-msg">2室2厅/ 108平</span>
+          <span class="favorite-mas">丰台区-方庄-晶城秀府</span>
+          <strong class="favorite-price"><span class="price-number">500</span>万</strong>
+          <span class="flag-line"><span class="red-flag-text">学区房</span><span class="red-flag-text">满五唯一</span></span>
+        </a>
+        <a class="house-tel-btn" data-name="" data-moblie="" href="tel:{{$telnumber}}"><i class="icon icon-telephone"></i></a>
+      </article>
+    </li>
+    <li>
+      <figure><a href="{{$url}}"><img src=""
+                                      data-src="http://res2.esf.leju.com/new_leju/src/img/home/live_house_demo.png"
+                                      alt="{{$alt}}"></a></figure>
+      <article>
+        <a class="" href="{{$url}}">
+          <span class="favorite-tit">石景山核心地段核心 温馨一居啊啊啊啊啊</span>
+          <span class="favorite-msg">2室2厅/ 108平</span>
+          <span class="favorite-mas">丰台区-方庄-晶城秀府</span>
+          <strong class="favorite-price"><span class="price-number">500</span>万</strong>
+          <span class="flag-line"><span class="red-flag-text">学区房</span><span class="red-flag-text">满五唯一</span></span>
+        </a>
+        <a class="house-tel-btn" data-name="" data-moblie="" href="tel:15773455818"><i class="icon icon-telephone"></i></a>
+      </article>
+    </li>
+  </ul>
+  <a class="watch-more-btn" href="{{$url}}">查看更多<i class="icon icon-arrow-gray"></i></a>
+</section>
+<footer class="footer">
+  <p class="footer-house">house</p>
+  <a onclick="gotoTop();return false;" class="go-top dn" style="display: block;">返回顶部</a>
+  <nav class="footer-nav">
+    <a href="http://m.leju.com/touch/esf/bj">首页</a>
+    <a href="http://m.leju.com/touch/esf/bj/house">二手房</a>
+    <a href="http://m.leju.com/touch/esf/bj/house/i2">租房</a>
+    <a href="http://m.leju.com/touch/esf/bj/community">小区房价</a>
+    <a href="http://m.leju.com/touch/esf/bj/agent/">置业专家</a>
+  </nav>
+  <p class="version-list">
+    <a href="http://m.leju.com/touch/index/">触屏版</a>
+    <a href="http://bj.esf.leju.com/?device_choose=pc">电脑版</a>
+    <a href="http://m.leju.com/touch/app/lists.html">客户端</a>
+  </p>
+  <p>2017新浪乐居</p>
+</footer>
+
+<!--搜索弹出层-->
+<div id="wrapper_search" class="body_bg">
+  <section id="scroller_search" class="new_search">
+    <div class="wrapper_scroller_in">
+      <!--搜索器-->
+      <div class="search_input">
+        <a href="javascript:void(0)" id="closeSearch" class="search_back_btn"></a>
+        <div class="input_out">
+          <a href="javascript:void(0)" class="i_closeBtn"></a>
+          <input type="text" id="comm_search" class="comm_search" placeholder="请输入小区名称、地址" value="">
+        </div>
+        <a href="javascript:void(0)" class="search_btn">搜索</a>
+      </div>
+      <!--选项卡-->
+      <div class="tab_box">
+        <div class="tab_part">
+          <div class="pa">
+            <ul class="clearfix">
+              <li><a href="javascript:void(0)" class="colorWhite" data-shtype='sale'>二手房</a></li>
+              <li><a href="javascript:void(0)" class="" data-shtype="rent">租房</a></li>
+              <li><a href="javascript:void(0)" class="" data-shtype="home">小区房价</a></li>
+              <li><a href="javascript:void(0)" class="" data-shtype="agent">置业专家</a></li>
+            </ul>
+            <div class="red_bg"></div>
+          </div>
+        </div>
+        <div class="history_part search_box clearfix">
+          <div class="history_sale">
+            <a href="javascript:void(0)" class="clean_result">
+              <span>最近搜索</span>
+            </a>
+            <ul>
+
+            </ul>
+          </div>
+          <div class="history_rent">
+            <a href="javascript:void(0)" class="clean_result">
+              <span>最近搜索</span>
+            </a>
+            <ul>
+
+            </ul>
+          </div>
+          <div class="history_home">
+            <a href="javascript:void(0)" class="clean_result">
+              <span>最近搜索</span>
+            </a>
+            <ul>
+
+            </ul>
+          </div>
+          <div class="history_agent">
+            <a href="javascript:void(0)" class="clean_result">
+              <span>最近搜索</span>
+            </a>
+            <ul>
+
+            </ul>
+          </div>
+        </div>
+        <div class="search_result_part search_box">
+          <div class="esf">
+
+          </div>
+          <div class="rental">
+
+          </div>
+          <div class="price">
+
+          </div>
+          <div class="expert">
+
+          </div>
+        </div>
+      </div>
+      <!--热门小区-->
+      <div class="recommend_tab">
+        <h4 class="nearby">热门小区</h4>
+        <ul class="clearfix">
+
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+<!--搜索弹出层 END-->
+</body>
+</html>

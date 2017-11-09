@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myApp">
+    <a href="#/a">a页面</a>
+    <a href="#/b">b页面</a>
+    <div ng-view></div>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-route/angular-route.js"></script>
+    <script>
+        var myApp = angular.module('myApp',['ngRoute']);
+        myApp.config(['$routeProvider',function($routeProvider){
+            $routeProvider
+                        .when('/a/:ceshi?',{
+                            controller:'aController',
+                            template:'Hello a'
+                        })
+                        .when('/b',{
+                            controller:'bController',
+                            template:'hello b'
+                        })
+                        .otherwise({
+                            redirectTo:'/a'
+                        })
+
+        }])
+        myApp.controller('aController',['$scope','$routeParams',function($scope,$routeParams){
+            console.log($routeParams);
+        }]);
+        myApp.controller('bController',['$scope',function($scope){
+
+        }]);
+    </script>
+</body>
+</html>

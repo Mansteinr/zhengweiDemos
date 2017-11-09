@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    <!-- <input type="color"> -->
+     
+    <!--
+        这是一个组件
+    -->   
+    <div id="myApp"></div>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type="text/babel">
+        //jsx js + xml html是一种比较严格的xml js + html
+        //创建一个组件
+        var Panel = React.createClass({
+            render:function(){
+                return <div className="panel panel-default">
+                    <div className="panel-heading">
+                    <h3 className="panel-title">Panel title</h3>
+                    </div>
+                    <div className="panel-body">
+                    Panel content
+                    </div>
+                    <div className="panel-footer">Panel footer</div>
+                </div>
+            }
+        })
+        //把组件渲染到页面上
+        ReactDOM.render(
+            <Panel />,
+            document.querySelector('#myApp')
+        )
+    </script>
+</body>
+</html>

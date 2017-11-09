@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Template • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<!-- CSS overrides - remove if you don't need it -->
+		<link rel="stylesheet" href="css/app.css">
+	</head>
+	<body>
+		<section class="todoapp" id="myApp">
+			
+		</section>
+		<footer class="info">
+			<p>Double-click to edit a todo</p>
+			<!-- Remove the below line ↓ -->
+			<p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+			<!-- Change this out with your name and url ↓ -->
+			<p>Created by <a href="http://todomvc.com">you</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+		<!-- Scripts here. Don't remove ↓ -->
+		<script src="https://unpkg.com/react@latest/dist/react.js"></script>
+		<script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+		<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+		<script type="text/babel">
+			//如何理解react --> 用人来比喻
+			//把for替代成htmlFor,checked去掉,value去掉，class替代成className
+            var MyHead = React.createClass({
+                handleAdd:function(event){
+                    event.preventDefault();
+                    this.props.handleAdd(this.refs.newItem.value);
+                    this.refs.newItem.value = '';
+                },
+                render:function(){
+                    return <header className="header">
+						<h1>todos</h1>
+						<form onSubmit={this.handleAdd}>
+                            <input className="new-todo" ref='newItem' placeholder="What needs to be done?" autoFocus  />
+                        </form>
+					</header>
+                }
+            });
+            var MyBody = React.createClass({
+                componentWillMount() {
+                    this.setState({
+                        todos:this.props.todos
+                    })
+                },
+                handleChange:function(event){
+                    // console.log(event.target.checked)
+                    var index = event.target.dataset.index;
+                    this.props.handleChange(index);
+                },
+                handleDeleteItem:function(event){
+                    var index = event.target.dataset.index;
+                    this.props.handleDeleteItem(index);
+                },
+                handleToggleAll:function(event){
+                    // console.log(event.target.checked);
+                    this.props.handleToggleAll(event.target.checked);
+                },
+                render:function(){
+                    var that = this;
+                    return <section className="main">
+						<input id="toggle-all" className="toggle-all" type="checkbox" onChange={this.handleToggleAll} />
+						<label htmlFor="toggle-all">Mark all as complete</label>
+						<ul className="todo-list">
+                            {
+                            this.state.todos.map(function(item,index){
+                                return (
+                                    <li className={item.completed?'completed':''} key={index}>
+                                        <div className="view">
+                                            <input className="toggle" type="checkbox"  checked={item.completed} data-index={index} onChange={that.handleChange} />
+                                            <label>{item.name}</label>
+                                            <button className="destroy" onClick={that.handleDeleteItem} data-index={index}></button>
+                                        </div>
+                                        <input className="edit" />
+							        </li>
+                                )
+                            })
+                            }
+						</ul>
+					</section>
+                }
+            });
+            var MyFooter = React.createClass({
+                handleClearCompleted:function(){
+                    this.props.handleClearCompleted()
+                },
+                render:function(){
+                    return <footer className="footer">
+						<span className="todo-count"><strong>{this.props.length}</strong> item left</span>
+						<ul className="filters">
+							<li>
+								<a className="selected" href="#/">All</a>
+							</li>
+							<li>
+								<a href="#/active">Active</a>
+							</li>
+							<li>
+								<a href="#/completed">Completed</a>
+							</li>
+						</ul>
+				`		<button className="clear-completed" onClick={this.handleClearCompleted}>Clear completed</button>
+					</footer>
+                }
+            })
+            var Todo = React.createClass({
+                componentWillMount() {
+                    this.setState({
+                        todos:[
+                            {name:'吃饭',completed:true},
+                            {name:'睡觉',completed:false},
+                            {name:'打豆豆',completed:true}
+                        ]
+                    })
+                },
+                handleChange:function(index){
+                    var MyTodos = this.state.todos;
+                    MyTodos[index].completed = !MyTodos[index].completed;
+                    this.setState({
+                        todos:MyTodos
+                    })
+                },
+                handleDeleteItem:function(index){
+                    var MyTodos = this.state.todos;
+                    MyTodos.splice(index,1);
+                    this.setState({
+                        todos:MyTodos
+                    })
+                },
+                handleAdd:function(val){
+                    var MyTodos = this.state.todos;
+                    MyTodos.push({
+                        name:val,
+                        completed:false
+                    })
+                    this.setState({
+                        todos:MyTodos
+                    })
+                },
+                handleToggleAll:function(bool){
+                    var MyTodos = this.state.todos;
+                    MyTodos = MyTodos.map(function(item,index){
+                        item.completed = bool;
+                        return item;
+                    });
+                    this.setState({
+                        todos:MyTodos
+                    })
+                },
+                handleClearCompleted:function(){
+                    var MyTodos = this.state.todos;
+                    for(var i=MyTodos.length-1;i>=0;i--){
+                        if(MyTodos[i].completed == true){
+                            MyTodos.splice(i,1);
+                        }
+                    }
+                    this.setState({
+                        todos:MyTodos
+                    })
+                },
+                render:function(){
+                    return <div>
+                    <MyHead handleAdd={this.handleAdd} />
+					<MyBody todos={this.state.todos} handleChange={this.handleChange} handleDeleteItem={this.handleDeleteItem}  handleToggleAll={this.handleToggleAll} />
+                    <MyFooter length={this.state.todos.filter(function(item){return item.completed == false}).length}  handleClearCompleted={this.handleClearCompleted} />
+				</div>
+                }
+            })
+
+			ReactDOM.render(
+				<Todo />,
+				document.getElementById('myApp')
+			);
+		</script>
+	</body>
+</html>

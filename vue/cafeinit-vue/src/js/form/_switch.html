@@ -1,0 +1,11 @@
+<div v-else v-bind:class="[
+    ns + 'switch',
+    option.disabled ? (ns + 'disabled') : ''
+  ]">
+  <input type="checkbox"
+    v-model="myValue"
+    v-bind:name="name"
+    v-bind:value="option.value"
+    v-bind:disabled="option.disabled"
+    v-on:change="onChange" />
+</div>

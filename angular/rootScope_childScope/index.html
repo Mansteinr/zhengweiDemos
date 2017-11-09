@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController1">
+        <input type="button" ng-click="sendParentFn()" name="" value="">
+    </div>
+    <div ng-controller="myController2">
+
+    </div>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script>
+        // myController1和myController2是兄弟级作用域
+        // 点击myController1中的按钮 --> 触发ng-click事件 --> 向父级传递数据 --> 由于父级已经监听了这个事情 --> 父级执行对应的回调函数 --> 父级向所有的子级发送广播数据
+        var myApp = angular.module('myApp',[]);
+        myApp.controller('myController1',function($scope,$rootScope){
+            $rootScope.$on('helloParentEvent',function(event,data){
+                console.log(event);
+                console.log(data);
+                console.log(222);
+                $rootScope.$broadcast('helloChildEvent',"wefwfe");
+            });
+            $scope.$on('helloChildEvent',function(event,data){
+                console.log(event);
+                console.log(data);
+            })
+            $scope.sendParentFn = function(){
+                $scope.$emit('helloParentEvent','发向父级的数据aaa');      
+            };
+        });
+        myApp.controller('myController2',function($scope,$rootScope){
+            $scope.$on('helloChildEvent',function(event,data){
+                console.log(event);
+                console.log(data);
+            })
+        });
+    </script>
+</body>
+</html>
